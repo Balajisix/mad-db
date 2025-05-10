@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dbapp.databinding.ActivityMainBinding
 import com.example.dbapp.databinding.DialogAddExpenseBinding
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 
@@ -25,7 +26,9 @@ class MainActivity : AppCompatActivity(), ExpenseAdapter.OnItemClick {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.topAppBar)
+        val toolbar = findViewById<MaterialToolbar>(R.id.topAppBar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = "Expenses"
 
         adapter = ExpenseAdapter(expenseList, this)
         binding.rvExpenses.layoutManager = LinearLayoutManager(this)
